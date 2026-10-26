@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: lifescript-api
+    runtime: docker
+    plan: free
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    dockerCommand: python -m app.hosted
+    healthCheckPath: /health/ready
+    envVars:
+      - key: AI_PROVIDER
+        value: gemini
+      - key: ENABLE_AUDIO
+        value: "false"
+      - key: ENABLE_DOCLING
+        value: "false"
+      - key: LANGSMITH_TRACING
+        value: "false"
+      - key: WORKER_POLL_SECONDS
+        value: "10"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GENERATION_MODEL
+        sync: false
+      - key: EMBEDDING_MODEL
+        sync: false
+      - key: CHECKPOINT_DATABASE_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false

@@ -1,0 +1,4 @@
+# Optional, resource-intensive local engines. Install only on a suitable worker.
+-r requirements.txt
+faster-whisper
+docling

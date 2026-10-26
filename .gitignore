@@ -1,0 +1,32 @@
+# Backend
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+backend/.pytest_cache/
+.pytest_cache/
+
+
+# Frontend
+frontend/.dart_tool/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/build/
+frontend/*.html
+
+# Local credentials, model/checkpoint data and tooling state
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.local/
+**/.venv/
+**/venv/
+**/.env
+**/.env.*
+!**/.env.example
+.tool-state/
+**/error_log.txt
+**/.dart-tool/
+**/key.properties
+**/*.jks
+**/*.keystore

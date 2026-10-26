@@ -1,0 +1,53 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start API",
+      "type": "shell",
+      "command": "venv\\Scripts\\python.exe -m uvicorn app.main:app --reload --no-access-log",
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "lifescript-api",
+        "pattern": {
+          "regexp": "^(?!)$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*Started server process.*",
+          "endsPattern": ".*Application startup complete.*"
+        }
+      }
+    },
+    {
+      "label": "Start worker",
+      "type": "shell",
+      "command": "venv\\Scripts\\python.exe -m app.worker",
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "lifescript-worker",
+        "pattern": {
+          "regexp": "^(?!)$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": ".*worker_ready.*"
+        }
+      }
+    },
+    {
+      "label": "Start backend services",
+      "dependsOn": [
+        "Start API",
+        "Start worker"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
